@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umera Makeup Studio | Bridal Makeup &amp; Beauty Salon, Mumbra</title>
+<meta name="description" content="Umera Makeup Studio — premium bridal makeup, hair styling, skin care &amp; beauty services in Mumbra, Thane. Book your appointment today.">
+<meta property="og:title" content="Umera Makeup Studio">
+<meta property="og:description" content="Enhance Your Natural Beauty — Professional Bridal Makeup, Hair Styling, Skin Care &amp; Beauty Services in Mumbra.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --rose-gold:#b76e79;
+  --rose-gold-deep:#9c5a63;
+  --blush:#f6dadc;
+  --blush-soft:#fbeceb;
+  --ivory:#fffbf6;
+  --beige:#efe3d3;
+  --gold:#c9a45c;
+  --gold-bright:#dcb872;
+  --ink:#2a211d;
+  --ink-soft:#6b5b53;
+  --line:rgba(42,33,29,0.1);
+  --surface:#ffffff;
+  --surface-glass:rgba(255,255,255,0.6);
+  --shadow:0 20px 60px -20px rgba(158,90,99,0.35);
+  --shadow-sm:0 8px 24px -12px rgba(158,90,99,0.3);
+  --radius:20px;
+  --radius-sm:12px;
+  --font-display:'Cormorant Garamond', serif;
+  --font-body:'Jost', sans-serif;
+  --bg:var(--ivory);
+  --text:var(--ink);
+  --text-soft:var(--ink-soft);
+  --card:var(--surface);
+  --card-glass:var(--surface-glass);
+  --nav-bg:rgba(255,251,246,0.75);
+  --transition:0.4s cubic-bezier(.22,.61,.36,1);
+}
+[data-theme="dark"]{
+  --bg:#1b1512;
+  --text:#f3e9e2;
+  --text-soft:#c9b7ad;
+  --card:#241d19;
+  --card-glass:rgba(36,29,25,0.6);
+  --nav-bg:rgba(27,21,18,0.75);
+  --line:rgba(255,255,255,0.08);
+  --shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  --shadow-sm:0 8px 24px -12px rgba(0,0,0,0.5);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  transition:background var(--transition), color var(--transition);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.1;}
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--rose-gold-deep);
+  font-weight:500;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
+[data-theme="dark"] .eyebrow{color:var(--gold-bright);}
+.section{padding:110px 6vw;position:relative;}
+@media(max-width:768px){.section{padding:72px 6vw;}}
+.section-head{max-width:640px;margin-bottom:56px;}
+.section-head h2{font-size:clamp(32px,4.2vw,52px);margin-top:14px;letter-spacing:.01em;}
+.section-head p{margin-top:16px;color:var(--text-soft);font-size:16px;line-height:1.7;max-width:520px;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.container{max-width:1240px;margin:0 auto;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 30px;border-radius:100px;font-size:13px;letter-spacing:.12em;
+  text-transform:uppercase;font-weight:500;transition:all var(--transition);
+  white-space:nowrap;
+}
+.btn-primary{background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-deep));color:#fff;box-shadow:var(--shadow-sm);}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--card-glass);backdrop-filter:blur(10px);}
+.btn-ghost:hover{border-color:var(--rose-gold);color:var(--rose-gold-deep);}
+.btn-gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#2a211d;}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.btn-sm{padding:11px 22px;font-size:11px;}
+
+/* ============ LOADER ============ */
+#loader{
+  position:fixed;inset:0;background:var(--ivory);z-index:9999;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;
+  transition:opacity .7s ease, visibility .7s ease;
+}
+#loader.hide{opacity:0;visibility:hidden;}
+.loader-mono{font-family:var(--font-display);font-size:54px;color:var(--rose-gold-deep);position:relative;}
+.loader-mono svg{width:90px;height:90px;}
+.loader-mono path{
+  stroke:var(--rose-gold-deep);stroke-width:1.4;fill:none;
+  stroke-dasharray:300;stroke-dashoffset:300;
+  animation:draw 1.6s ease forwards infinite;
+}
+@keyframes draw{
+  0%{stroke-dashoffset:300;}
+  60%{stroke-dashoffset:0;}
+  100%{stroke-dashoffset:0;opacity:0;}
+}
+.loader-label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-soft);}
+
+/* ============ NAV ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  background:var(--nav-bg);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  transition:background var(--transition);
+}
+.nav-wrap{
+  max-width:1400px;margin:0 auto;padding:16px 6vw;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose-gold),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-family:var(--font-display);font-size:20px;font-weight:600;
+  box-shadow:var(--shadow-sm);
+}
+.logo-text{display:flex;flex-direction:column;line-height:1.1;}
+.logo-text .en{font-family:var(--font-display);font-size:20px;font-weight:600;letter-spacing:.02em;}
+.logo-text .hi{font-size:10px;letter-spacing:.1em;color:var(--text-soft);}
+nav.links{display:flex;gap:34px;}
+nav.links a{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-soft);position:relative;padding:4px 0;transition:color var(--transition);}
+nav.links a:hover{color:var(--rose-gold-deep);}
+nav.links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold);transition:width var(--transition);}
+nav.links a:hover::after{width:100%;}
+.nav-actions{display:flex;align-items:center;gap:14px;}
+.theme-toggle{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;transition:all var(--transition);
+}
+.theme-toggle:hover{border-color:var(--gold);}
+.theme-toggle svg{width:18px;height:18px;stroke:var(--text);}
+.burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:4px;}
+.burger span{width:18px;height:1.4px;background:var(--text);display:block;}
+@media(max-width:980px){
+  nav.links{display:none;}
+  .burger{display:flex;}
+  .btn-primary.nav-cta{display:none;}
+}
+.mobile-menu{
+  position:fixed;top:0;right:-100%;width:80%;max-width:340px;height:100vh;
+  background:var(--card);z-index:600;padding:100px 34px 40px;transition:right .5s cubic-bezier(.22,.61,.36,1);
+  box-shadow:-20px 0 60px rgba(0,0,0,0.15);
+}
+.mobile-menu.open{right:0;}
+.mobile-menu a{display:block;font-family:var(--font-display);font-size:26px;padding:14px 0;border-bottom:1px solid var(--line);}
+.menu-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:590;opacity:0;visibility:hidden;transition:all .4s;}
+.menu-backdrop.open{opacity:1;visibility:visible;}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding:150px 6vw 80px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(201,164,92,0.18), transparent 45%),
+    radial-gradient(circle at 10% 85%, rgba(183,110,121,0.18), transparent 50%),
+    var(--bg);
+  overflow:hidden;
+}
+.hero-grid{max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
+.hero-copy .eyebrow{margin-bottom:22px;}
+.hero-copy h1{font-size:clamp(40px,6vw,74px);letter-spacing:.01em;}
+.hero-copy h1 em{font-style:italic;color:var(--rose-gold-deep);}
+.hero-copy p.lead{margin-top:22px;font-size:18px;line-height:1.7;color:var(--text-soft);max-width:460px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+.hero-visual{position:relative;aspect-ratio:4/5;border-radius:32px;overflow:hidden;
+  background:linear-gradient(155deg,var(--blush) 0%, var(--beige) 55%, var(--rose-gold) 130%);
+  box-shadow:var(--shadow);
+}
+.hero-visual .frame-caption{
+  position:absolute;bottom:24px;left:24px;right:24px;
+  background:var(--card-glass);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.4);
+  border-radius:var(--radius-sm);padding:16px 20px;
+}
+.hero-visual .frame-caption .en{font-family:var(--font-display);font-size:22px;}
+.hero-visual .frame-caption .sub{font-size:12px;color:var(--text-soft);margin-top:2px;}
+.hero-visual::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(255,255,255,0.5) 1px,transparent 1.5px);
+  background-size:22px 22px;opacity:.5;
+}
+.hero-visual .art-mono{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);
+  font-family:var(--font-display);font-size:170px;color:rgba(255,255,255,0.55);
+  font-style:italic;letter-spacing:-.02em;
+}
+.floaty{position:absolute;border-radius:50%;filter:blur(2px);opacity:.6;animation:float 7s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+
+/* swatch strip - signature divider */
+.swatch-strip{display:flex;height:14px;width:100%;overflow:hidden;}
+.swatch-strip span{flex:1;transition:flex .6s ease;}
+.swatch-strip:hover span{flex:1;}
+.swatch-strip span:hover{flex:2.4;}
+
+/* ============ STATS ============ */
+.stats{background:linear-gradient(135deg,var(--rose-gold-deep),var(--rose-gold));padding:64px 6vw;}
+.stats-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+.stat-num{font-family:var(--font-display);font-size:clamp(34px,4vw,52px);color:#fff;}
+.stat-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-top:6px;}
+
+/* ============ WHY US ============ */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+@media(max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.why-grid{grid-template-columns:1fr;}}
+.why-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px 26px;
+  transition:transform var(--transition), box-shadow var(--transition);
+}
+.why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-sm);}
+.why-icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--blush),var(--beige));display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.why-icon svg{width:24px;height:24px;stroke:var(--rose-gold-deep);}
+.why-card h4{font-size:20px;margin-bottom:8px;}
+.why-card p{font-size:14px;color:var(--text-soft);line-height:1.6;}
+
+/* ============ SERVICES ============ */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
+.tab-btn{
+  padding:10px 20px;border-radius:100px;border:1px solid var(--line);font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);transition:all var(--transition);
+}
+.tab-btn.active{background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-deep));color:#fff;border-color:transparent;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:980px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.svc-grid{grid-template-columns:1fr;}}
+.svc-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  transition:transform var(--transition), box-shadow var(--transition);
+}
+.svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-sm);}
+.svc-thumb{height:150px;position:relative;background:linear-gradient(140deg,var(--blush-soft),var(--beige));display:flex;align-items:center;justify-content:center;}
+.svc-thumb svg{width:38px;height:38px;stroke:var(--rose-gold-deep);opacity:.8;}
+.svc-body{padding:22px 22px 24px;}
+.svc-body h4{font-size:19px;}
+.svc-meta{display:flex;justify-content:space-between;align-items:center;margin:12px 0 16px;font-size:12px;color:var(--text-soft);}
+.svc-price{font-family:var(--font-display);font-size:20px;color:var(--rose-gold-deep);}
+[data-theme="dark"] .svc-price{color:var(--gold-bright);}
+.svc-book{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:all var(--transition);}
+.svc-book:hover{background:var(--rose-gold);border-color:var(--rose-gold);color:#fff;}
+
+/* ============ GALLERY ============ */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:130px;gap:14px;}
+.gallery-grid .g-item{border-radius:16px;background:linear-gradient(135deg,var(--blush),var(--beige));position:relative;overflow:hidden;}
+.gallery-grid .g-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+.gallery-grid .g-item:nth-child(4){grid-row:span 2;}
+.gallery-grid .g-item:nth-child(6){grid-column:span 2;}
+@media(max-width:768px){.gallery-grid{grid-template-columns:repeat(2,1fr);}.gallery-grid .g-item:nth-child(1){grid-column:span 2;}}
+.g-item::after{content:attr(data-label);position:absolute;bottom:10px;left:12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--rose-gold-deep);background:rgba(255,255,255,0.7);padding:4px 10px;border-radius:100px;}
+[data-theme="dark"] .g-item::after{color:#fff;background:rgba(0,0,0,0.4);}
+
+/* before/after */
+.ba-wrap{margin-top:60px;max-width:720px;}
+.ba-slider{position:relative;height:380px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);}
+.ba-before,.ba-after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;color:#fff;}
+.ba-before{background:linear-gradient(135deg,#8d7267,#5c4b43);}
+.ba-after{background:linear-gradient(135deg,var(--rose-gold),var(--gold));clip-path:inset(0 50% 0 0);}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);pointer-events:none;}
+.ba-handle::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:#fff;border-radius:50%;box-shadow:0 6px 20px rgba(0,0,0,0.25);}
+.ba-range{position:absolute;inset:0;width:100%;opacity:0;cursor:ew-resize;}
+.ba-tag{position:absolute;top:16px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.35);color:#fff;padding:5px 12px;border-radius:100px;}
+.ba-tag.left{left:16px;}.ba-tag.right{right:16px;}
+
+/* ============ TEAM ============ */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+@media(max-width:980px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.team-grid{grid-template-columns:1fr;}}
+.team-card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform var(--transition);}
+.team-card:hover{transform:translateY(-8px);}
+.team-photo{height:220px;background:linear-gradient(160deg,var(--blush),var(--rose-gold));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:44px;color:#fff;}
+.team-info{padding:20px;}
+.team-info h4{font-size:19px;}
+.team-info .role{font-size:12px;color:var(--rose-gold-deep);text-transform:uppercase;letter-spacing:.06em;margin:4px 0 10px;}
+[data-theme="dark"] .team-info .role{color:var(--gold-bright);}
+.team-info p{font-size:13px;color:var(--text-soft);line-height:1.6;}
+.stars{display:flex;gap:2px;margin-top:10px;}
+.stars svg{width:14px;height:14px;fill:var(--gold);}
+
+/* ============ TESTIMONIALS ============ */
+.testi-track{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:980px){.testi-track{grid-template-columns:1fr;}}
+.testi-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
+.testi-card .stars{margin-bottom:14px;}
+.testi-card p{font-size:15px;line-height:1.75;color:var(--text-soft);font-style:italic;}
+.testi-who{display:flex;align-items:center;gap:12px;margin-top:20px;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--rose-gold),var(--gold));display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-family:var(--font-display);}
+.testi-who .name{font-size:14px;font-weight:500;}
+.testi-who .loc{font-size:11px;color:var(--text-soft);}
+.google-badge{display:flex;align-items:center;gap:14px;margin-top:40px;padding:20px 26px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);max-width:400px;}
+.google-badge .gnum{font-family:var(--font-display);font-size:32px;}
+
+/* ============ OFFERS ============ */
+.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+@media(max-width:980px){.offer-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.offer-grid{grid-template-columns:1fr;}}
+.offer-card{border-radius:var(--radius);padding:28px 24px;color:#fff;position:relative;overflow:hidden;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;}
+.offer-card h4{font-size:22px;}
+.offer-card p{font-size:12px;opacity:.9;margin-top:8px;}
+.offer-card .tag{align-self:flex-start;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,0.2);padding:5px 12px;border-radius:100px;}
+.offer-card:nth-child(1){background:linear-gradient(150deg,#b76e79,#7d444d);}
+.offer-card:nth-child(2){background:linear-gradient(150deg,#c9a45c,#8f6f34);}
+.offer-card:nth-child(3){background:linear-gradient(150deg,#9c5a63,#3f2226);}
+.offer-card:nth-child(4){background:linear-gradient(150deg,#d9a5ab,#a56b73);}
+
+/* ============ BOOKING ============ */
+.booking-wrap{background:linear-gradient(155deg,var(--blush-soft),var(--beige));border-radius:32px;padding:60px 6vw;}
+[data-theme="dark"]{}
+[data-theme="dark"] .booking-wrap{background:linear-gradient(155deg,#2a201b,#241c18);}
+.booking-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:50px;align-items:start;}
+@media(max-width:900px){.booking-grid{grid-template-columns:1fr;}}
+.book-steps{display:flex;flex-direction:column;gap:22px;}
+.book-step{display:flex;gap:16px;}
+.book-step .num{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--gold);color:var(--rose-gold-deep);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:15px;flex-shrink:0;}
+.book-step h5{font-size:16px;}
+.book-step p{font-size:13px;color:var(--text-soft);margin-top:2px;}
+.book-form{background:var(--card);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+@media(max-width:560px){.form-row{grid-template-columns:1fr;}}
+.field label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft);display:block;margin-bottom:7px;}
+.field select,.field input,.field textarea{
+  width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);
+  font-family:var(--font-body);font-size:14px;transition:border var(--transition);
+}
+.field select:focus,.field input:focus,.field textarea:focus{outline:none;border-color:var(--rose-gold);}
+.slot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px;}
+@media(max-width:480px){.slot-grid{grid-template-columns:repeat(3,1fr);}}
+.slot{padding:9px 4px;text-align:center;border:1px solid var(--line);border-radius:8px;font-size:12px;transition:all var(--transition);}
+.slot.selected{background:var(--rose-gold);color:#fff;border-color:var(--rose-gold);}
+.book-submit{width:100%;margin-top:8px;padding:16px;}
+.form-note{font-size:11px;color:var(--text-soft);margin-top:14px;text-align:center;}
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(30px);
+  background:var(--ink);color:#fff;padding:16px 26px;border-radius:100px;font-size:13px;
+  opacity:0;pointer-events:none;transition:all .4s;z-index:1000;display:flex;align-items:center;gap:10px;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast svg{width:16px;height:16px;stroke:var(--gold-bright);}
+
+/* ============ FAQ ============ */
+.faq-list{max-width:800px;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;}
+.faq-q h4{font-size:17px;font-weight:500;font-family:var(--font-body);}
+.faq-q .plus{width:22px;height:22px;flex-shrink:0;position:relative;}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--rose-gold-deep);top:50%;left:50%;transform:translate(-50%,-50%);transition:transform var(--transition);}
+.faq-q .plus::before{width:14px;height:1.4px;}
+.faq-q .plus::after{width:1.4px;height:14px;}
+.faq-item.open .plus::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-a p{padding-bottom:22px;font-size:14px;color:var(--text-soft);line-height:1.7;max-width:640px;}
+
+/* ============ INSTAGRAM ============ */
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;}
+@media(max-width:768px){.insta-grid{grid-template-columns:repeat(3,1fr);}}
+.insta-item{aspect-ratio:1;border-radius:12px;background:linear-gradient(135deg,var(--blush),var(--rose-gold));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.insta-item svg{width:22px;height:22px;stroke:#fff;opacity:.85;}
+
+/* ============ NEWSLETTER ============ */
+.newsletter{background:linear-gradient(135deg,var(--rose-gold-deep),var(--rose-gold));border-radius:32px;padding:60px 6vw;text-align:center;}
+.newsletter h2{color:#fff;font-size:clamp(26px,3.4vw,38px);}
+.newsletter p{color:rgba(255,255,255,0.85);margin-top:10px;font-size:14px;}
+.newsletter-form{display:flex;gap:10px;max-width:420px;margin:26px auto 0;}
+.newsletter-form input{flex:1;padding:14px 18px;border-radius:100px;border:none;font-family:var(--font-body);font-size:14px;}
+.newsletter-form button{padding:14px 26px;border-radius:100px;background:var(--ink);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+.contact-info{display:flex;flex-direction:column;gap:24px;}
+.info-row{display:flex;gap:16px;align-items:flex-start;}
+.info-icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--blush),var(--beige));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.info-icon svg{width:20px;height:20px;stroke:var(--rose-gold-deep);}
+.info-row h5{font-size:15px;margin-bottom:3px;}
+.info-row p,.info-row a{font-size:14px;color:var(--text-soft);line-height:1.6;}
+.social-row{display:flex;gap:10px;margin-top:6px;}
+.social-row a{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:all var(--transition);}
+.social-row a:hover{background:var(--rose-gold);border-color:var(--rose-gold);}
+.social-row a:hover svg{stroke:#fff;}
+.social-row svg{width:16px;height:16px;stroke:var(--text);}
+.map-embed{border-radius:var(--radius);overflow:hidden;height:100%;min-height:320px;box-shadow:var(--shadow-sm);border:1px solid var(--line);}
+.map-embed iframe{width:100%;height:100%;min-height:320px;border:0;filter:saturate(0.85);}
+.contact-form{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:#efe3d3;padding:70px 6vw 30px;}
+[data-theme="dark"] footer{background:#120e0c;}
+.footer-grid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+.footer-grid h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:18px;}
+.footer-grid ul li{margin-bottom:11px;font-size:14px;color:#d9c9be;}
+.footer-grid ul li a:hover{color:var(--gold-bright);}
+.footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.footer-about p{font-size:13px;color:#c2ada1;line-height:1.7;max-width:280px;}
+.footer-bottom{max-width:1240px;margin:50px auto 0;padding-top:26px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#a8968c;}
+
+/* ============ FLOATING BUTTONS ============ */
+.float-btns{position:fixed;right:22px;bottom:22px;z-index:400;display:flex;flex-direction:column;gap:12px;}
+.fbtn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.25);transition:transform var(--transition);}
+.fbtn:hover{transform:scale(1.08);}
+.fbtn svg{width:24px;height:24px;fill:#fff;}
+.fbtn.whatsapp{background:#25D366;}
+.fbtn.call{background:linear-gradient(135deg,var(--rose-gold),var(--rose-gold-deep));}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
+}
+</style>
+</head>
+<body data-theme="light">
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-mono">
+    <svg viewBox="0 0 100 100"><path d="M20,30 L20,60 Q20,75 35,75 Q50,75 50,60 L50,30 M50,60 Q50,75 65,75 Q80,75 80,60 L80,30"/></svg>
+  </div>
+  <div class="loader-label">Umera Makeup Studio</div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-wrap">
+    <a href="#home" class="logo">
+      <div class="logo-mark">UM</div>
+      <div class="logo-text">
+        <span class="en">Umera Makeup Studio</span>
+        <span class="hi">उमेरा मेकअप स्टूडियो</span>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Artists</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#offers">Offers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <a href="#booking" class="btn btn-primary nav-cta">Book Now</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#team">Artists</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#offers">Offers</a>
+  <a href="#booking">Book Now</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-copy reveal in">
+      <span class="eyebrow">Bridal Makeup Studio · Mumbra</span>
+      <h1>Enhance Your <em>Natural</em> Beauty</h1>
+      <p class="lead">Professional bridal makeup, hair styling, skin care &amp; beauty services in Mumbra — crafted by artists who treat every face as its own canvas.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-primary">Book Appointment</a>
+        <a href="https://wa.me/917208296711" target="_blank" class="btn btn-ghost">WhatsApp Now</a>
+        <a href="tel:+917208296711" class="btn btn-ghost">Call Now</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal in" style="transition-delay:.15s">
+      <div class="floaty" style="width:90px;height:90px;background:var(--gold);top:8%;right:10%;"></div>
+      <div class="floaty" style="width:60px;height:60px;background:#fff;bottom:30%;left:6%;animation-delay:2s;"></div>
+      <div class="art-mono">UM</div>
+      <div class="frame-caption">
+        <div class="en">Signature Bridal Look</div>
+        <div class="sub">HD Airbrush · Draping · Hairstyling</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swatch-strip">
+  <span style="background:#e8c4b8"></span><span style="background:#d99a8e"></span><span style="background:#b76e79"></span>
+  <span style="background:#9c5a63"></span><span style="background:#c9a45c"></span><span style="background:#efe3d3"></span>
+  <span style="background:#7d444d"></span><span style="background:#f6dadc"></span>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="reveal"><div class="stat-num" data-count="4200">0</div><div class="stat-label">Brides Styled</div></div>
+    <div class="reveal" style="transition-delay:.1s"><div class="stat-num" data-count="9">0</div><div class="stat-label">Years Experience</div></div>
+    <div class="reveal" style="transition-delay:.2s"><div class="stat-num" data-count="4.9">0</div><div class="stat-label">Google Rating</div></div>
+    <div class="reveal" style="transition-delay:.3s"><div class="stat-num" data-count="30">0</div><div class="stat-label">Signature Services</div></div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>Artistry, Hygiene &amp; a Personal Touch</h2>
+      <p>Every appointment at Umera Makeup Studio is built around you — your skin, your event, your comfort.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15 9l7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z"/></svg></div>
+        <h4>Certified Artists</h4>
+        <p>Trained &amp; certified in HD, airbrush and bridal makeup techniques.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:.08s">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 4 10.2C4 17.5 12 22 12 22Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+        <h4>Premium Products</h4>
+        <p>Only skin-safe, cruelty-free and long-lasting cosmetic brands used.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:.16s">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></div>
+        <h4>Easy Online Booking</h4>
+        <p>Pick your artist, date &amp; time in a few taps — confirmed instantly.</p>
+      </div>
+      <div class="why-card reveal" style="transition-delay:.24s">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 4.5-4 8-8 11Z"/></svg></div>
+        <h4>Loved by Mumbra</h4>
+        <p>Rated 4.9★ by hundreds of brides &amp; regular clients nearby.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services" style="background:var(--card);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Services</span>
+      <h2>Curated Beauty, Head to Toe</h2>
+      <p>From everyday grooming to full bridal transformations — every service, priced clearly.</p>
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="bridal">Bridal &amp; Makeup</button>
+      <button class="tab-btn" data-tab="hair">Hair</button>
+      <button class="tab-btn" data-tab="skin">Skin &amp; Facial</button>
+      <button class="tab-btn" data-tab="nails">Nails &amp; Waxing</button>
+      <button class="tab-btn" data-tab="packages">Packages</button>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2>Bridal &amp; Studio Moments</h2>
+      <p>A glimpse of our work — replace these frames with your studio's real photography.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item reveal" data-label="Bridal Look"></div>
+      <div class="g-item reveal" data-label="HD Makeup" style="transition-delay:.05s"></div>
+      <div class="g-item reveal" data-label="Hairstyling" style="transition-delay:.1s"></div>
+      <div class="g-item reveal" data-label="Studio" style="transition-delay:.15s"></div>
+      <div class="g-item reveal" data-label="Draping" style="transition-delay:.2s"></div>
+      <div class="g-item reveal" data-label="Engagement" style="transition-delay:.25s"></div>
+      <div class="g-item reveal" data-label="Party Makeup" style="transition-delay:.3s"></div>
+    </div>
+
+    <div class="ba-wrap reveal">
+      <span class="eyebrow">Before &amp; After</span>
+      <h3 style="margin-top:12px;font-size:26px;">Drag to Reveal the Transformation</h3>
+      <div class="ba-slider" id="baSlider">
+        <div class="ba-before">Before</div>
+        <div class="ba-after" id="baAfter">After</div>
+        <div class="ba-tag left">Before</div>
+        <div class="ba-tag right">After</div>
+        <div class="ba-handle" id="baHandle"></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" id="baRange">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team" style="background:var(--card);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Meet the Artists</span>
+      <h2>Hands You Can Trust</h2>
+      <p>Certified professionals specialising in bridal, HD and airbrush makeup.</p>
+    </div>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Client Love</span>
+      <h2>What Our Clients Say</h2>
+      <p>Real words from real brides and regulars across Mumbra &amp; Thane.</p>
+    </div>
+    <div class="testi-track" id="testiTrack"></div>
+    <div class="google-badge reveal">
+      <div class="gnum">4.9</div>
+      <div>
+        <div class="stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>
+        </div>
+        <p style="font-size:12px;color:var(--text-soft);margin-top:4px;">Based on 380+ Google reviews</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="section" id="offers" style="background:var(--card);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Offers &amp; Packages</span>
+      <h2>Seasonal &amp; Bridal Savings</h2>
+      <p>Combo deals, wedding packages and referral rewards, updated regularly.</p>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card reveal"><span class="tag">Limited</span><div><h4>Festive Glow</h4><p>20% off facials &amp; HD makeup this season.</p></div></div>
+      <div class="offer-card reveal" style="transition-delay:.06s"><span class="tag">Bridal</span><div><h4>Bride + Groom Combo</h4><p>Complete wedding day package for two.</p></div></div>
+      <div class="offer-card reveal" style="transition-delay:.12s"><span class="tag">Membership</span><div><h4>Beauty Club</h4><p>Flat discounts on every visit, all year.</p></div></div>
+      <div class="offer-card reveal" style="transition-delay:.18s"><span class="tag">Referral</span><div><h4>Bring a Friend</h4><p>Earn credit when friends book their first visit.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="section" id="booking">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Book Appointment</span>
+      <h2>Reserve Your Slot in 4 Steps</h2>
+    </div>
+    <div class="booking-wrap reveal">
+      <div class="booking-grid">
+        <div class="book-steps">
+          <div class="book-step"><div class="num">1</div><div><h5>Choose Service</h5><p>Pick from bridal, hair, skin or nail care.</p></div></div>
+          <div class="book-step"><div class="num">2</div><div><h5>Select Artist</h5><p>Choose your preferred makeup artist or stylist.</p></div></div>
+          <div class="book-step"><div class="num">3</div><div><h5>Pick Date &amp; Time</h5><p>See live slot availability for that day.</p></div></div>
+          <div class="book-step"><div class="num">4</div><div><h5>Confirm</h5><p>Get instant confirmation on WhatsApp &amp; email.</p></div></div>
+        </div>
+        <form class="book-form" id="bookForm">
+          <div class="form-row">
+            <div class="field">
+              <label>Service</label>
+              <select required>
+                <option value="">Select a service</option>
+                <option>Bridal Makeup</option>
+                <option>HD Makeup</option>
+                <option>Hair Styling</option>
+                <option>Hydra Facial</option>
+                <option>Manicure &amp; Pedicure</option>
+                <option>Keratin Treatment</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Makeup Artist</label>
+              <select required>
+                <option value="">Any available</option>
+                <option>Umera Shaikh</option>
+                <option>Nikhat Ansari</option>
+                <option>Sana Khan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Date</label>
+              <input type="date" required>
+            </div>
+            <div class="field">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+91 00000 00000" required>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:20px;">
+            <label>Time Slot</label>
+            <div class="slot-grid" id="slotGrid">
+              <div class="slot">11:30</div><div class="slot">1:00</div><div class="slot">3:00</div><div class="slot">5:00</div>
+              <div class="slot">6:30</div><div class="slot">8:00</div><div class="slot">9:00</div><div class="slot">9:30</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary book-submit">Confirm Appointment</button>
+          <p class="form-note">You'll receive an OTP verification &amp; WhatsApp confirmation once connected to live booking.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--card);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Good to Know</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="section" id="instagram">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Follow Along</span>
+      <h2>@umera.makeupstudio</h2>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-item reveal"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+      <div class="insta-item reveal" style="transition-delay:.05s"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+      <div class="insta-item reveal" style="transition-delay:.1s"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+      <div class="insta-item reveal" style="transition-delay:.15s"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+      <div class="insta-item reveal" style="transition-delay:.2s"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+      <div class="insta-item reveal" style="transition-delay:.25s"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="newsletter reveal">
+      <h2>Stay in the Glow</h2>
+      <p>Get seasonal offers &amp; bridal season updates in your inbox.</p>
+      <form class="newsletter-form" id="newsForm">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background:var(--card);">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visit or Contact Us</span>
+      <h2>We'd Love to Welcome You</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info">
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div>
+            <div><h5>Studio Address</h5><p>Shop No. 3, Jalgaonkar Building, Bhaji Market, Bombay Colony, Mumbra, Thane, Maharashtra 400612, India</p></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.8 2.1Z"/></svg></div>
+            <div><h5>Phone / WhatsApp</h5><a href="tel:+917208296711">+91 72082 96711</a></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div><h5>Business Hours</h5><p>Monday – Sunday, 11:30 AM – 10:00 PM</p></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+            <div><h5>Email</h5><a href="mailto:hello@umeramakeupstudio.com">hello@umeramakeupstudio.com</a></div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg></div>
+            <div><h5>Follow Us</h5>
+              <div class="social-row">
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 0 1 1-1Z"/></svg></a>
+                <a href="https://wa.me/917208296711" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5Z"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="field"><label>Your Name</label><input type="text" required></div>
+            <div class="field"><label>Phone Number</label><input type="tel" required></div>
+          </div>
+          <div class="field" style="margin-bottom:16px;"><label>Message</label><textarea rows="4" placeholder="Tell us what you're looking for..." required></textarea></div>
+          <button type="submit" class="btn btn-gold" style="width:100%;">Send Message</button>
+        </form>
+      </div>
+      <div class="map-embed reveal">
+        <iframe src="https://maps.google.com/maps?q=Bhaji%20Market%2C%20Bombay%20Colony%2C%20Mumbra%2C%20Thane%2C%20Maharashtra%20400612&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen title="Umera Makeup Studio Location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-about">
+      <div class="footer-logo">
+        <div class="logo-mark">UM</div>
+        <div class="logo-text">
+          <span class="en" style="color:#fff;">Umera Makeup Studio</span>
+          <span class="hi" style="color:#c2ada1;">उमेरा मेकअप स्टूडियो</span>
+        </div>
+      </div>
+      <p>Premium bridal makeup, hair &amp; skin care in the heart of Mumbra. Enhancing your natural beauty since day one.</p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#team">Artists</a></li><li><a href="#offers">Offers</a></li></ul>
+    </div>
+    <div>
+      <h5>Services</h5>
+      <ul><li><a href="#services">Bridal Makeup</a></li><li><a href="#services">Hair Styling</a></li><li><a href="#services">Skin &amp; Facial</a></li><li><a href="#services">Nail Art</a></li></ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li>Shop No. 3, Jalgaonkar Building</li>
+        <li>Bhaji Market, Mumbra, Thane 400612</li>
+        <li>+91 72082 96711</li>
+        <li>11:30 AM – 10:00 PM Daily</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Umera Makeup Studio. All rights reserved.</span>
+    <span>Crafted with care in Mumbra, Maharashtra</span>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/917208296711" target="_blank" class="fbtn whatsapp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-1-.3-1.6-.6-2.9-1.3-4.8-4.2-4.9-4.4-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.6.7 2 .8 2.1.1.2.1.3 0 .5-.5 1-1 .9-.5 1.7.9 1.5 1.9 2.1 3.3 2.8.2.1.4.1.5-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.6.8 1.9 1 .3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+  <a href="tel:+917208296711" class="fbtn call" aria-label="Call"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.8 2.1Z"/></svg></a>
+</div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg">Done!</span></div>
+
+<script>
+/* ===== LOADER ===== */
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('hide'),900);
+});
+
+/* ===== THEME TOGGLE ===== */
+const themeBtn=document.getElementById('themeToggle');
+const themeIcon=document.getElementById('themeIcon');
+function setTheme(t){
+  document.body.setAttribute('data-theme',t);
+  themeIcon.innerHTML = t==='dark'
+    ? '<circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>'
+    : '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>';
+}
+themeBtn.addEventListener('click',()=>{
+  const cur=document.body.getAttribute('data-theme');
+  setTheme(cur==='dark'?'light':'dark');
+});
+
+/* ===== MOBILE MENU ===== */
+const burger=document.getElementById('burgerBtn'),menu=document.getElementById('mobileMenu'),backdrop=document.getElementById('menuBackdrop');
+function toggleMenu(){menu.classList.toggle('open');backdrop.classList.toggle('open');}
+burger.addEventListener('click',toggleMenu);
+backdrop.addEventListener('click',toggleMenu);
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',toggleMenu));
+
+/* ===== REVEAL ON SCROLL ===== */
+const revealEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.15});
+revealEls.forEach(el=>io.observe(el));
+
+/* ===== ANIMATED COUNTERS ===== */
+const counters=document.querySelectorAll('.stat-num');
+const cio=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target, target=parseFloat(el.dataset.count), isFloat = target % 1 !== 0;
+      let cur=0; const step=target/60;
+      const t=setInterval(()=>{
+        cur+=step;
+        if(cur>=target){cur=target;clearInterval(t);}
+        el.textContent = isFloat ? cur.toFixed(1) : Math.floor(cur).toLocaleString()+ (target>=1000?'+':(el===counters[3]?'+':''));
+      },20);
+      cio.unobserve(el);
+    }
+  });
+},{threshold:.4});
+counters.forEach(c=>cio.observe(c));
+
+/* ===== SERVICES DATA + TABS ===== */
+const services = {
+  bridal: [
+    {n:'Bridal Makeup',d:'180 min',p:'₹8,999+',i:'m'},
+    {n:'HD Makeup',d:'90 min',p:'₹3,999+',i:'m'},
+    {n:'Airbrush Makeup',d:'100 min',p:'₹5,499+',i:'m'},
+    {n:'Party Makeup',d:'60 min',p:'₹2,499+',i:'m'},
+    {n:'Reception Makeup',d:'120 min',p:'₹6,499+',i:'m'},
+    {n:'Engagement Makeup',d:'90 min',p:'₹4,999+',i:'m'},
+    {n:'Eye Makeup',d:'30 min',p:'₹999+',i:'m'},
+    {n:'Saree Draping',d:'30 min',p:'₹799+',i:'m'},
+    {n:'Groom Package',d:'60 min',p:'₹2,999+',i:'m'},
+  ],
+  hair: [
+    {n:'Hair Cut',d:'40 min',p:'₹399+',i:'h'},
+    {n:'Hair Styling',d:'45 min',p:'₹799+',i:'h'},
+    {n:'Hair Spa',d:'60 min',p:'₹999+',i:'h'},
+    {n:'Hair Coloring',d:'90 min',p:'₹1,999+',i:'h'},
+    {n:'Keratin Treatment',d:'150 min',p:'₹4,499+',i:'h'},
+    {n:'Smoothening',d:'150 min',p:'₹3,999+',i:'h'},
+    {n:'Head Massage',d:'30 min',p:'₹499+',i:'h'},
+  ],
+  skin: [
+    {n:'Facial',d:'50 min',p:'₹999+',i:'s'},
+    {n:'Hydra Facial',d:'60 min',p:'₹2,499+',i:'s'},
+    {n:'Cleanup',d:'30 min',p:'₹599+',i:'s'},
+    {n:'Bleach',d:'25 min',p:'₹399+',i:'s'},
+    {n:'Threading',d:'15 min',p:'₹99+',i:'s'},
+    {n:'Skin Treatments',d:'60 min',p:'₹1,499+',i:'s'},
+    {n:'Body Spa',d:'75 min',p:'₹2,199+',i:'s'},
+  ],
+  nails: [
+    {n:'Waxing (Full Body)',d:'60 min',p:'₹1,299+',i:'n'},
+    {n:'Manicure',d:'40 min',p:'₹599+',i:'n'},
+    {n:'Pedicure',d:'45 min',p:'₹699+',i:'n'},
+    {n:'Nail Art',d:'40 min',p:'₹499+',i:'n'},
+  ],
+  packages: [
+    {n:'Bride Package',d:'Full Day',p:'₹19,999+',i:'p'},
+    {n:'Groom Package',d:'Half Day',p:'₹5,999+',i:'p'},
+    {n:'Pre-Wedding Combo',d:'3 Sessions',p:'₹12,999+',i:'p'},
+    {n:'Party Ready Combo',d:'120 min',p:'₹3,499+',i:'p'},
+  ]
+};
+const icons = {
+  m:'<path d="M12 2 15 9l7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z"/>',
+  h:'<path d="M4 20c4-6 8-6 8-14M20 20c-4-6-8-6-8-14"/>',
+  s:'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>',
+  n:'<path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/>',
+  p:'<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 4v16M16 4v16"/>'
+};
+const svcGrid=document.getElementById('svcGrid');
+function renderServices(tab){
+  svcGrid.innerHTML='';
+  services[tab].forEach((s,idx)=>{
+    const card=document.createElement('div');
+    card.className='svc-card reveal';
+    card.style.transitionDelay=(idx*0.05)+'s';
+    card.innerHTML=`
+      <div class="svc-thumb"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${icons[s.i]}</svg></div>
+      <div class="svc-body">
+        <h4>${s.n}</h4>
+        <div class="svc-meta"><span>${s.d}</span><span class="svc-price">${s.p}</span></div>
+        <button class="svc-book" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Now</button>
+      </div>`;
+    svcGrid.appendChild(card);
+    io.observe(card);
+  });
+}
+renderServices('bridal');
+document.getElementById('tabs').addEventListener('click',(e)=>{
+  const btn=e.target.closest('.tab-btn'); if(!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderServices(btn.dataset.tab);
+});
+
+/* ===== TEAM ===== */
+const team=[
+  {n:'Umera Shaikh',r:'Founder & Lead Bridal Artist',e:'9 yrs experience · HD & Airbrush Certified',s:5},
+  {n:'Nikhat Ansari',r:'Senior Hairstylist',e:'6 yrs experience · Keratin & Smoothening Expert',s:5},
+  {n:'Sana Khan',r:'Skin & Facial Specialist',e:'5 yrs experience · Hydra Facial Certified',s:4.5},
+  {n:'Ayesha Sheikh',r:'Nail & Beauty Artist',e:'4 yrs experience · Nail Art Specialist',s:5},
+];
+const teamGrid=document.getElementById('teamGrid');
+team.forEach((t,i)=>{
+  const initials=t.n.split(' ').map(w=>w[0]).join('');
+  const el=document.createElement('div');
+  el.className='team-card reveal'; el.style.transitionDelay=(i*0.08)+'s';
+  el.innerHTML=`<div class="team-photo">${initials}</div>
+    <div class="team-info"><h4>${t.n}</h4><div class="role">${t.r}</div><p>${t.e}</p>
+    <div class="stars">${'<svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>'.repeat(5)}</div></div>`;
+  teamGrid.appendChild(el); io.observe(el);
+});
+
+/* ===== TESTIMONIALS ===== */
+const testimonials=[
+  {t:'Umera and her team made my bridal look absolutely flawless — it lasted through the entire wedding night without a single touch-up.',n:'Fatima R.',l:'Mumbra',},
+  {t:'Best hydra facial I have had. The studio is spotless and the staff genuinely cares about your skin, not just upselling.',n:'Priya S.',l:'Thane',},
+  {t:'Booked engagement makeup last minute and they still managed to fit me in and it turned out stunning. Highly recommend!',n:'Zara K.',l:'Mumbra',},
+];
+const testiTrack=document.getElementById('testiTrack');
+testimonials.forEach((t,i)=>{
+  const initials=t.n.split(' ').map(w=>w[0]).join('');
+  const el=document.createElement('div');
+  el.className='testi-card reveal'; el.style.transitionDelay=(i*0.1)+'s';
+  el.innerHTML=`<div class="stars">${'<svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.3L10 15l-5.6 3.1 1.4-6.3L1 7.5l6.4-.6z"/></svg>'.repeat(5)}</div>
+  <p>"${t.t}"</p>
+  <div class="testi-who"><div class="testi-avatar">${initials}</div><div><div class="name">${t.n}</div><div class="loc">${t.l}</div></div></div>`;
+  testiTrack.appendChild(el); io.observe(el);
+});
+
+/* ===== FAQ ===== */
+const faqs=[
+  {q:'Do I need to pay an advance to book an appointment?',a:'For bridal and package bookings we request a small advance to confirm your date. Regular services can be booked without advance payment.'},
+  {q:'Can I reschedule or cancel my appointment?',a:'Yes, appointments can be rescheduled or cancelled up to 24 hours in advance from the booking confirmation you receive.'},
+  {q:'Do you provide home service for bridal makeup?',a:'Yes, home and venue bridal makeup services are available in Mumbra and nearby areas for an additional visit charge.'},
+  {q:'What payment methods do you accept?',a:'We accept UPI, credit/debit cards, net banking and popular wallets, along with cash at the studio.'},
+  {q:'How early should I book for wedding season?',a:'We recommend booking bridal slots at least 3-4 weeks in advance during peak wedding season to guarantee your preferred artist.'},
+];
+const faqList=document.getElementById('faqList');
+faqs.forEach((f,i)=>{
+  const el=document.createElement('div');
+  el.className='faq-item'+(i===0?' open':'');
+  el.innerHTML=`<div class="faq-q"><h4>${f.q}</h4><div class="plus"></div></div><div class="faq-a"><p>${f.a}</p></div>`;
+  faqList.appendChild(el);
+});
+faqList.addEventListener('click',(e)=>{
+  const item=e.target.closest('.faq-item'); if(!item) return;
+  const wasOpen=item.classList.contains('open');
+  faqList.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null;});
+  if(!wasOpen){item.classList.add('open'); const a=item.querySelector('.faq-a'); a.style.maxHeight=a.scrollHeight+'px';}
+});
+setTimeout(()=>{ const first=faqList.querySelector('.faq-item.open .faq-a'); if(first) first.style.maxHeight=first.scrollHeight+'px'; },100);
+
+/* ===== BEFORE/AFTER SLIDER ===== */
+const baRange=document.getElementById('baRange'),baAfter=document.getElementById('baAfter'),baHandle=document.getElementById('baHandle');
+baRange.addEventListener('input',()=>{
+  const v=baRange.value;
+  baAfter.style.clipPath=`inset(0 ${100-v}% 0 0)`;
+  baHandle.style.left=v+'%';
+});
+
+/* ===== SLOT SELECT ===== */
+document.getElementById('slotGrid').addEventListener('click',(e)=>{
+  const slot=e.target.closest('.slot'); if(!slot) return;
+  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('selected'));
+  slot.classList.add('selected');
+});
+
+/* ===== TOAST HELPER ===== */
+const toast=document.getElementById('toast'),toastMsg=document.getElementById('toastMsg');
+function showToast(msg){
+  toastMsg.textContent=msg; toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),3200);
+}
+
+/* ===== FORMS (demo only — no backend connected) ===== */
+document.getElementById('bookForm').addEventListener('submit',(e)=>{
+  e.preventDefault();
+  showToast('Appointment request received — connect a backend to confirm via SMS/WhatsApp.');
+  e.target.reset();
+  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('selected'));
+});
+document.getElementById('contactForm').addEventListener('submit',(e)=>{
+  e.preventDefault(); showToast('Message sent — we will get back to you shortly.'); e.target.reset();
+});
+document.getElementById('newsForm').addEventListener('submit',(e)=>{
+  e.preventDefault(); showToast('Subscribed! Welcome to the Umera family.'); e.target.reset();
+});
+</script>
+</body>
+</html>
